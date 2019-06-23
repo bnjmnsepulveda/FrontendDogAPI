@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, forkJoin } from 'rxjs';
 import { ApiService } from './api.service';
 import { Raza } from '../model/domain';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,21 @@ import { switchMap } from 'rxjs/operators';
 export class RazaService {
 
   constructor(private apiService: ApiService) { }
+
+  findByNombre(nombre: string) {
+    const subrazas$ = this.apiService.findAllSubrazas(nombre);
+    const imagenes$ = this.apiService.findImagenesByRaza(nombre);
+    return forkJoin([subrazas$, imagenes$]).pipe(
+      map(responseList => {
+        const raza: Raza = {
+          nombre: nombre,
+          subrazas: responseList[0].message,
+          imagenes: responseList[1].message
+        };
+        return raza;
+      })
+    );
+  }
 
   findRazasList(): Observable<string[]> {
     return this.apiService.findAllRazas()

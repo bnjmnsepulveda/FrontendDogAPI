@@ -16,6 +16,10 @@ export class ApiService extends AbstractApiService<ResponseApi<any>> {
     return super.get(`${contantes.API_URL}breeds/list/all`);
   }
 
+  findAllSubrazas(nombre: string): Observable<ResponseApi<string[]>> {
+    return super.get(`${contantes.API_URL}breed/${nombre}/list`);
+  }
+
   findImagenesByRaza(raza: string): Observable<ResponseApi<string[]>> {
     return super.get(`${contantes.API_URL}breed/${raza}/images`);
   }
