@@ -1,0 +1,13 @@
+<div *ngIf="raza">
+<h1>{{raza.nombre}}</h1>
+<h3>Subrazas</h3>
+<ul *ngFor="let subraza of raza.subrazas">
+  <li>{{subraza}}</li>
+</ul>
+<div>
+    <div *ngFor="let imagen of raza.imagenes">
+    <img [src]="imagen" width="300px" >
+  </div>
+
+</div>
+</div>

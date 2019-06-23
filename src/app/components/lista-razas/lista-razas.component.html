@@ -1,6 +1,6 @@
 <div *ngIf="razas">
   <ul *ngFor="let raza of razas">
-   <li>{{raza.nombre}}</li>
+   <li><span>{{raza.nombre}}</span><button (click)="onSeleccionarRaza(raza)">Ver perrito</button></li>
    <ul *ngFor="let subraza of raza.subrazas">
     <li>{{subraza}}</li>
    </ul>
