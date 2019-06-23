@@ -1,0 +1,8 @@
+<div *ngIf="razas">
+  <ul *ngFor="let raza of razas">
+   <li>{{raza.nombre}}</li>
+   <ul *ngFor="let subraza of raza.subrazas">
+    <li>{{subraza}}</li>
+   </ul>
+  </ul>
+</div>
