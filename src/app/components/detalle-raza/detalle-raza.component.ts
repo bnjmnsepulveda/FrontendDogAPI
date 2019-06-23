@@ -22,11 +22,14 @@ export class DetalleRazaComponent implements OnInit {
   ngOnInit() {
     this.activedRoute.params
     .pipe(
-      switchMap(params => this.razaService.findByNombre(params.nombre))
-    ).subscribe(raza => {
-      console.log(JSON.stringify(raza));
-      this.raza = raza;
-    });
+      switchMap(
+        params => this.razaService.findByNombre(params.nombre)
+      )
+    )
+    .subscribe(
+      raza => this.raza = raza,
+      error => console.log(error)
+    );
   }
 
 }

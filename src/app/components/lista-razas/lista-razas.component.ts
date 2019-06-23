@@ -27,7 +27,6 @@ export class ListaRazasComponent implements OnInit {
   }
 
   onSeleccionarRaza(raza: Raza) {
-    console.log('buscar raza ' + raza.nombre);
     this.router.navigate(['raza', raza.nombre]);
   }
 }
