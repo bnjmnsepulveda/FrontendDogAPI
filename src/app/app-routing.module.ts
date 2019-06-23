@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ListaRazasComponent } from './components/lista-razas/lista-razas.component';
 import { DetalleRazaComponent } from './components/detalle-raza/detalle-raza.component';
+import { ContenedorRazasComponent } from './components/contenedor-razas/contenedor-razas.component';
 
 const routes: Routes = [{
   path: '',
-  component: ListaRazasComponent
+  component: ContenedorRazasComponent
 },
 {
   path: 'raza/:nombre',
