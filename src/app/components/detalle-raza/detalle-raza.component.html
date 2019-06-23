@@ -1,13 +1,17 @@
 <div *ngIf="raza">
-<h1>{{raza.nombre}}</h1>
-<h3>Subrazas</h3>
-<ul *ngFor="let subraza of raza.subrazas">
-  <li>{{subraza}}</li>
-</ul>
-<div>
-    <div *ngFor="let imagen of raza.imagenes">
-    <img [src]="imagen" width="300px" >
+  <h1>{{ raza.nombre }}</h1>
+  <h3>Subrazas</h3>
+  <div *ngIf="raza.subrazas.length > 0; else sinSubrazas">
+    <ul *ngFor="let subraza of raza.subrazas">
+      <li>{{ subraza }}</li>
+    </ul>
   </div>
-
-</div>
+  <ng-template #sinSubrazas>
+    <h5>El {{ raza.nombre }} no tiene subrazas</h5>
+  </ng-template>
+  <div>
+    <div *ngFor="let imagen of raza.imagenes">
+      <img [src]="imagen" width="300px" />
+    </div>
+  </div>
 </div>
