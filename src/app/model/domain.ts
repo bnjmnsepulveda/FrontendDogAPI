@@ -5,6 +5,7 @@ export interface ResponseApi<T> {
 
 export interface Raza {
   nombre: string;
+  avatar?: string;
   imagenes?: string[];
   subrazas?: string[];
 }

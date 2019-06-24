@@ -1,12 +1,41 @@
-<div class="content" *ngIf="razas">
-  <ol type="1">
-   <li *ngFor="let raza of razas">
-     <span>{{raza.nombre}}</span><button class="button is-rounded" (click)="onSeleccionarRaza(raza)">Ver perrito</button>
-     <ol type="1">
-        <li *ngFor="let subraza of raza.subrazas">
-          <span>{{raza.nombre}} {{subraza}}</span><button class="button is-rounded" (click)="onSeleccionarSubraza(raza.nombre, subraza)" >Ver perrito</button>
-        </li>
-       </ol>
-    </li>
-  </ol>
+<div class="content" *ngIf="razas; else cargando">
+  <table class="table is-striped">
+    <thead>
+      <tr>
+        <th>N°</th>
+        <th>Vista previa</th>
+        <th>Nombre Raza</th>
+        <th colspan="2">Subrazas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let raza of razas; let x = index">
+        <td>{{ x + 1}}</td>
+        <td>
+            <img
+              width="100"
+              src="{{ raza.avatar }}"
+            />
+          </td>
+        <td>
+          <span>{{ raza.nombre }}</span>
+        </td>
+        <td>
+          <app-lista-subrazas [raza]="raza" (seleccionarSubraza)="onSeleccionarSubraza($event)" ></app-lista-subrazas>
+        </td>
+
+        <td>
+            <a class="button is-rounded is-info is-outlined is-small" (click)="onSeleccionarRaza(raza)">
+                <span class="icon">
+                  <i class="fas fa-search"></i>
+                </span>
+                <span>Detalles</span>
+              </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+<ng-template #cargando>
+    <span class="has-text-info has-text-centered">Cargando lista de perros...</span>
+</ng-template>

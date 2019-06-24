@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, forkJoin } from 'rxjs';
+import { Observable, of, forkJoin, from } from 'rxjs';
 import { ApiService } from './api.service';
 import { Raza, Subraza } from '../model/domain';
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap, map, flatMap, toArray } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -57,8 +57,8 @@ export class RazaService {
   findAll(): Observable<Raza[]> {
     return this.apiService.findAllRazas()
     .pipe(
-      switchMap(response => {
-        const msg = response.message;
+      map(response => response.message),
+      switchMap(msg => {
         const razas: Raza[] = [];
         for (const item of Object.keys(msg)) {
           const subrazas: string[] = [];
@@ -70,8 +70,26 @@ export class RazaService {
             subrazas: subrazas
           });
         }
-        return of(razas);
-      })
+        return from(razas);
+      }),
+      flatMap(raza => {
+        const imagenes$ = this.findRandomImagenByNombreRaza(raza.nombre);
+        return forkJoin(of(raza), imagenes$);
+      }),
+      switchMap(observables => {
+        const raza = observables[0];
+        const imagen = observables[1];
+        raza.avatar = imagen;
+        return of(raza);
+      }),
+      toArray(),
+      map(array =>  array.sort((a, b) => a.nombre < b.nombre ? -1 : 1))
+    );
+  }
+
+  findRandomImagenByNombreRaza(nombre: string): Observable<string> {
+    return this.apiService.findImagenesByRazaRandom(nombre).pipe(
+      map(response => response.message)
     );
   }
 }

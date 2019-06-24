@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Raza } from 'src/app/model/domain';
 import { RazaService } from 'src/app/services/raza.service';
 import { ActivatedRoute } from '@angular/router';
-import { map, switchMap } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-detalle-raza',

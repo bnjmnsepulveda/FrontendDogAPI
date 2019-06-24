@@ -1,7 +1,12 @@
 <div>
   <div class="columns" *ngFor="let contenedor of contenedorImagenes">
-    <div class="column is-one-quarter" *ngFor="let imagen of contenedor.imagenes" >
-    <img [src]="imagen" width="300" />
-  </div>
+    <div
+      class="column is-one-quarter"
+      *ngFor="let imagen of contenedor.imagenes"
+    >
+      <div class="notification">
+        <img [src]="imagen" width="300" />
+      </div>
+    </div>
   </div>
 </div>

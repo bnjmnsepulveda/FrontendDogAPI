@@ -10,7 +10,7 @@ export class FiltroComponent implements OnInit {
 
   checkRaza = true;
   checkSubraza = true;
-  filtro: string;
+  filtro = '';
   _razas: Raza[];
   @Input()
   data: Raza[];
@@ -54,7 +54,18 @@ export class FiltroComponent implements OnInit {
   }
 
   onLimpiarFiltro() {
+    this.filtro = '';
     this.limpiarFiltro.emit(this.data);
+  }
+
+  onChangeRaza() {
+    this.checkRaza = !this.checkRaza;
+    this.onFiltrar();
+  }
+
+  onChageSubraza() {
+    this.checkSubraza = !this.checkSubraza;
+    this.onFiltrar();
   }
 
 }

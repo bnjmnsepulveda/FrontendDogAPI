@@ -1,4 +1,6 @@
-<div *ngIf="subraza">
-    <h1>{{ subraza.nombre }}</h1>
-    <app-imagenes [imagenes]="subraza.imagenes"></app-imagenes>
+<div  class="container is-fluid" *ngIf="subraza">
+  <div class="notification">
+    <h1 class="title">{{subraza.raza}} {{ subraza.nombre }}</h1>
   </div>
+  <app-imagenes [imagenes]="subraza.imagenes"></app-imagenes>
+</div>

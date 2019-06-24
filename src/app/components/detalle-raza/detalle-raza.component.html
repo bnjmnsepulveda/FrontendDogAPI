@@ -1,14 +1,6 @@
-<div *ngIf="raza">
-  <h1>{{ raza.nombre }}</h1>
-  <h3>Subrazas</h3>
-  <div *ngIf="raza.subrazas.length > 0; else sinSubrazas">
-    <ul *ngFor="let subraza of raza.subrazas">
-      <li>{{ subraza }}</li>
-    </ul>
+<div class="container is-fluid" *ngIf="raza">
+  <div class="notification">
+    <h1 class="title">{{ raza.nombre }}</h1>
   </div>
-  <ng-template #sinSubrazas>
-    <h5>El {{ raza.nombre }} no tiene subrazas</h5>
-  </ng-template>
   <app-imagenes [imagenes]="raza.imagenes"></app-imagenes>
-
 </div>
