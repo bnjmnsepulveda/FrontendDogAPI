@@ -82,7 +82,8 @@ export class RazaService {
         raza.avatar = imagen;
         return of(raza);
       }),
-      toArray()
+      toArray(),
+      map(array =>  array.sort((a, b) => a.nombre < b.nombre ? -1 : 1))
     );
   }
 
