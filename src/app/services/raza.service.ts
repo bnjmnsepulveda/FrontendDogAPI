@@ -74,4 +74,10 @@ export class RazaService {
       })
     );
   }
+
+  findRandomImagenByNombreRaza(nombre: string): Observable<string> {
+    return this.apiService.findImagenesByRazaRandom(nombre).pipe(
+      map(response => response.message)
+    );
+  }
 }

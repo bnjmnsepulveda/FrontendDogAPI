@@ -1,12 +1,55 @@
 <div class="content" *ngIf="razas">
-  <ol type="1">
-   <li *ngFor="let raza of razas">
-     <span>{{raza.nombre}}</span><button class="button is-rounded" (click)="onSeleccionarRaza(raza)">Ver perrito</button>
-     <ol type="1">
-        <li *ngFor="let subraza of raza.subrazas">
-          <span>{{raza.nombre}} {{subraza}}</span><button class="button is-rounded" (click)="onSeleccionarSubraza(raza.nombre, subraza)" >Ver perrito</button>
-        </li>
-       </ol>
-    </li>
-  </ol>
+  <table class="table is-striped">
+    <thead>
+      <tr>
+        <th>N°</th>
+        <th>Vista previa</th>
+        <th>Nombre Raza</th>
+        <th>Subrazas</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let raza of razas; let x = index">
+        <td>{{ x + 1}}</td>
+        <td>
+            <img
+              width="30"
+              src="{{ raza.avatar }}"
+            />
+          </td>
+        <td>
+          <span>{{ raza.nombre }}</span>
+        </td>
+        <td>
+          <div *ngIf="raza.subrazas.length > 0; else sinSubrazas">
+              <ol type="1">
+                  <li *ngFor="let subraza of raza.subrazas">
+                    <span>{{ raza.nombre }} {{ subraza }}</span
+                    >
+                    <a class="button is-rounded is-info is-outlined is-small" (click)="onSeleccionarSubraza(raza.nombre, subraza)">
+                        <span class="icon">
+                          <i class="fas fa-search"></i>
+                        </span>
+                        <span>Detalles</span>
+                      </a>
+                  </li>
+                </ol>
+          </div>
+          <ng-template #sinSubrazas>
+              <span class="has-text-danger">El {{ raza.nombre }} no tiene subrazas</span>
+          </ng-template>
+        </td>
+
+        <td>
+            <a class="button is-rounded is-info is-outlined is-small" (click)="onSeleccionarRaza(raza)">
+                <span class="icon">
+                  <i class="fas fa-search"></i>
+                </span>
+                <span>Detalles</span>
+              </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
