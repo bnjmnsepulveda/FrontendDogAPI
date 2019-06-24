@@ -23,18 +23,29 @@
         </td>
         <td>
           <div *ngIf="raza.subrazas.length > 0; else sinSubrazas">
-              <ol type="1">
-                  <li *ngFor="let subraza of raza.subrazas">
-                    <span>{{ raza.nombre }} {{ subraza }}</span
-                    >
-                    <a class="button is-rounded is-info is-outlined is-small" (click)="onSeleccionarSubraza(raza.nombre, subraza)">
-                        <span class="icon">
-                          <i class="fas fa-search"></i>
-                        </span>
-                        <span>Detalles</span>
-                      </a>
-                  </li>
-                </ol>
+              <table class="table is-striped">
+                <thead>
+                  <tr>
+                    <th>N°</th>
+                    <th>Nombre subraza</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let subraza of raza.subrazas; let i = index">
+                    <td>{{ i + 1}}</td>
+                    <td>{{ raza.nombre }} {{ subraza }}</td>
+                    <td>
+                        <a class="button is-rounded is-info is-outlined is-small" (click)="onSeleccionarSubraza(raza.nombre, subraza)">
+                            <span class="icon">
+                              <i class="fas fa-search"></i>
+                            </span>
+                            <span>Detalles</span>
+                          </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
           </div>
           <ng-template #sinSubrazas>
               <span class="has-text-danger">El {{ raza.nombre }} no tiene subrazas</span>
@@ -54,5 +65,5 @@
   </table>
 </div>
 <ng-template #cargando>
-    <span class="has-text-info">Cargando lista de perros...</span>
+    <span class="has-text-info has-text-centered">Cargando lista de perros...</span>
 </ng-template>

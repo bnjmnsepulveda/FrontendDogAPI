@@ -54,6 +54,7 @@ export class FiltroComponent implements OnInit {
   }
 
   onLimpiarFiltro() {
+    this.filtro = '';
     this.limpiarFiltro.emit(this.data);
   }
 
