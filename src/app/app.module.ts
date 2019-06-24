@@ -11,6 +11,7 @@ import { FiltroComponent } from './components/filtro/filtro.component';
 import { ContenedorRazasComponent } from './components/contenedor-razas/contenedor-razas.component';
 import { ApiErrorhandler } from './services/error-handler';
 import { DetalleSubrazaComponent } from './components/detalle-subraza/detalle-subraza.component';
+import { ImagenesComponent } from './components/imagenes/imagenes.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { DetalleSubrazaComponent } from './components/detalle-subraza/detalle-su
     DetalleRazaComponent,
     FiltroComponent,
     ContenedorRazasComponent,
-    DetalleSubrazaComponent
+    DetalleSubrazaComponent,
+    ImagenesComponent
   ],
   imports: [
     BrowserModule,

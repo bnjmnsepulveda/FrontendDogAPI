@@ -11,6 +11,7 @@ import { Raza, Subraza } from 'src/app/model/domain';
 export class ContenedorRazasComponent implements OnInit {
 
   razas: Raza[];
+  data: Raza[];
 
   constructor(
     private razaService: RazaService,
@@ -21,9 +22,20 @@ export class ContenedorRazasComponent implements OnInit {
     this.razaService
     .findAll()
     .subscribe(
-      razas =>  this.razas = razas ,
+      razas => {
+        this.data = razas.slice();
+        this.razas = razas;
+      },
       error => console.log(error)
     );
+  }
+
+  onFiltarRazas(razas: Raza[]) {
+    this.razas = razas;
+  }
+
+  onLimpiarFiltro(razas: Raza[]) {
+    this.razas = this.data;
   }
 
   onSeleccionarRaza(raza: Raza) {

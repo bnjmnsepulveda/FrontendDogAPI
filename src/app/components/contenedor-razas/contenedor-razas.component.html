@@ -1,6 +1,11 @@
 <h2>Lista de razas de cachupines</h2>
-<!--<app-filtro></app-filtro>-->
+<app-filtro
+[data]="data"
+[razas]="razas"
+(filtrarRazas)="onFiltarRazas($event)"
+(limpiarFiltro)="onLimpiarFiltro($event)"></app-filtro>
 <app-lista-razas
 [razas]="razas"
 (seleccionarRaza)="onSeleccionarRaza($event)"
-(seleccionarSubraza)="onSeleccionarSubraza($event)" ></app-lista-razas>
+(seleccionarSubraza)="onSeleccionarSubraza($event)"
+ ></app-lista-razas>
