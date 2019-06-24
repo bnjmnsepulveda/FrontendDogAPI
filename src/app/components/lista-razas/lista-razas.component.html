@@ -22,34 +22,7 @@
           <span>{{ raza.nombre }}</span>
         </td>
         <td>
-          <div *ngIf="raza.subrazas.length > 0; else sinSubrazas">
-              <table class="table is-striped">
-                <thead>
-                  <tr>
-                    <th>N°</th>
-                    <th>Nombre subraza</th>
-                    <th>Acciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let subraza of raza.subrazas; let i = index">
-                    <td>{{ i + 1}}</td>
-                    <td>{{ raza.nombre }} {{ subraza }}</td>
-                    <td>
-                        <a class="button is-rounded is-info is-outlined is-small" (click)="onSeleccionarSubraza(raza.nombre, subraza)">
-                            <span class="icon">
-                              <i class="fas fa-search"></i>
-                            </span>
-                            <span>Detalles</span>
-                          </a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-          </div>
-          <ng-template #sinSubrazas>
-              <span class="has-text-danger">El {{ raza.nombre }} no tiene subrazas</span>
-          </ng-template>
+          <app-lista-subrazas [raza]="raza" (seleccionarSubraza)="onSeleccionarSubraza($event)" ></app-lista-subrazas>
         </td>
 
         <td>

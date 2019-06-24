@@ -24,11 +24,7 @@ export class ListaRazasComponent implements OnInit {
     this.seleccionarRaza.emit(raza);
   }
 
-  onSeleccionarSubraza(raza: string, nombre: string) {
-    const subraza: Subraza = {
-      raza: raza,
-      nombre : nombre
-    };
+  onSeleccionarSubraza(subraza: Subraza ) {
     this.seleccionarSubraza.emit(subraza);
   }
 }
