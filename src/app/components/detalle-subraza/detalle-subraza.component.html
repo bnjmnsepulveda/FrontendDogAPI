@@ -1,0 +1,8 @@
+<div *ngIf="subraza">
+    <h1>{{ subraza.nombre }}</h1>
+    <div>
+      <div *ngFor="let imagen of subraza.imagenes">
+        <img [src]="imagen" width="300px" />
+      </div>
+    </div>
+  </div>

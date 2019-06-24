@@ -11,7 +11,6 @@ import { map, switchMap } from 'rxjs/operators';
 })
 export class DetalleRazaComponent implements OnInit {
 
-  @Input()
   raza: Raza;
 
   constructor(

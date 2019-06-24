@@ -9,3 +9,9 @@ export interface Raza {
   subrazas?: string[];
 }
 
+export interface Subraza {
+  raza: string;
+  nombre: string;
+  imagenes?: string[];
+}
+
