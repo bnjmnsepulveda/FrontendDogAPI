@@ -1,11 +1,21 @@
+<div class="container is-fluid">
+  <div class="notification" style="margin-top: 20px" >
+      <!---<p class="subtitle is-5">
+          <strong>Webapp Dog API</strong> información de razas y subrazas.
+        </p>-->
+      <app-filtro
+      [data]="data"
+      [razas]="razas"
+      (filtrarRazas)="onFiltarRazas($event)"
+      (limpiarFiltro)="onLimpiarFiltro($event)"
+    ></app-filtro>
+  </div>
+  <div class="notification">
+    <app-lista-razas
+      [razas]="razas"
+      (seleccionarRaza)="onSeleccionarRaza($event)"
+      (seleccionarSubraza)="onSeleccionarSubraza($event)"
+    ></app-lista-razas>
+  </div>
+</div>
 <h2>Lista de razas de cachupines</h2>
-<app-filtro
-[data]="data"
-[razas]="razas"
-(filtrarRazas)="onFiltarRazas($event)"
-(limpiarFiltro)="onLimpiarFiltro($event)"></app-filtro>
-<app-lista-razas
-[razas]="razas"
-(seleccionarRaza)="onSeleccionarRaza($event)"
-(seleccionarSubraza)="onSeleccionarSubraza($event)"
- ></app-lista-razas>
