@@ -1,4 +1,4 @@
-<div class="content" *ngIf="razas">
+<div class="content" *ngIf="razas; else cargando">
   <table class="table is-striped">
     <thead>
       <tr>
@@ -14,7 +14,7 @@
         <td>{{ x + 1}}</td>
         <td>
             <img
-              width="30"
+              width="100"
               src="{{ raza.avatar }}"
             />
           </td>
@@ -53,3 +53,6 @@
     </tbody>
   </table>
 </div>
+<ng-template #cargando>
+    <span class="has-text-info">Cargando lista de perros...</span>
+</ng-template>

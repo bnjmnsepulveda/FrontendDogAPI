@@ -10,7 +10,7 @@ export class FiltroComponent implements OnInit {
 
   checkRaza = true;
   checkSubraza = true;
-  filtro: string;
+  filtro = '';
   _razas: Raza[];
   @Input()
   data: Raza[];

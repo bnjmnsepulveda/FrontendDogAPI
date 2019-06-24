@@ -25,17 +25,7 @@ export class ContenedorRazasComponent implements OnInit {
   ngOnInit() {
 
     const razas$ = this.razaService
-    .findAll().pipe(
-      switchMap( x => from(x)),
-      flatMap(raza => this.joinObservables(raza)),
-      switchMap(observables => {
-        const raza = observables[0];
-        const imagen = observables[1];
-        raza.avatar = imagen;
-        return of(raza);
-      }),
-      toArray()
-    )
+    .findAll()
     .subscribe(
       razas => {
         this.data = razas.slice();
@@ -43,11 +33,6 @@ export class ContenedorRazasComponent implements OnInit {
       },
       error => console.log(error)
     );
-  }
-
-  joinObservables(raza: Raza) {
-    const imagenes$ = this.razaService.findRandomImagenByNombreRaza(raza.nombre);
-    return forkJoin(of(raza), imagenes$);
   }
 
   onFiltarRazas(razas: Raza[]) {
