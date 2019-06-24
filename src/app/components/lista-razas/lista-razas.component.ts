@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { RazaService } from 'src/app/services/raza.service';
-import { Raza } from 'src/app/model/domain';
-import { Router } from '@angular/router';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Raza, Subraza } from 'src/app/model/domain';
 
 @Component({
   selector: 'app-lista-razas',
@@ -10,23 +8,27 @@ import { Router } from '@angular/router';
 })
 export class ListaRazasComponent implements OnInit {
 
+  @Input()
   razas: Raza[];
+  @Output()
+  seleccionarRaza = new EventEmitter<Raza>();
+  @Output()
+  seleccionarSubraza = new EventEmitter<Subraza>();
 
-  constructor(
-    private razaService: RazaService,
-    private router: Router
-    ) { }
+  constructor() { }
 
   ngOnInit() {
-    this.razaService
-    .findAll()
-    .subscribe(
-      razas =>  this.razas = razas ,
-      error => console.log(error)
-    );
   }
 
   onSeleccionarRaza(raza: Raza) {
-    this.router.navigate(['raza', raza.nombre]);
+    this.seleccionarRaza.emit(raza);
+  }
+
+  onSeleccionarSubraza(raza: string, nombre: string) {
+    const subraza: Subraza = {
+      raza: raza,
+      nombre : nombre
+    };
+    this.seleccionarSubraza.emit(subraza);
   }
 }

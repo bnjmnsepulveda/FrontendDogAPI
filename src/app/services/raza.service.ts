@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, forkJoin } from 'rxjs';
 import { ApiService } from './api.service';
-import { Raza } from '../model/domain';
+import { Raza, Subraza } from '../model/domain';
 import { switchMap, map } from 'rxjs/operators';
 
 @Injectable({
@@ -22,6 +22,20 @@ export class RazaService {
           imagenes: responseList[1].message
         };
         return raza;
+      })
+    );
+  }
+
+  findSubrazaByNombre(raza: string, nombre: string): Observable<Subraza> {
+    return this.apiService.findImagenesBySubraza(raza, nombre)
+    .pipe(
+      map(response => {
+        const subraza: Subraza = {
+          raza: raza,
+          nombre : nombre,
+          imagenes : response.message
+        };
+        return subraza;
       })
     );
   }

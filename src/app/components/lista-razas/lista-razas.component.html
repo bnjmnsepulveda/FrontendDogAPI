@@ -1,8 +1,12 @@
-<div *ngIf="razas">
-  <ul *ngFor="let raza of razas">
-   <li><span>{{raza.nombre}}</span><button (click)="onSeleccionarRaza(raza)">Ver perrito</button></li>
-   <ul *ngFor="let subraza of raza.subrazas">
-    <li>{{subraza}}</li>
-   </ul>
-  </ul>
+<div class="content" *ngIf="razas">
+  <ol type="1">
+   <li *ngFor="let raza of razas">
+     <span>{{raza.nombre}}</span><button class="button is-rounded" (click)="onSeleccionarRaza(raza)">Ver perrito</button>
+     <ol type="1">
+        <li *ngFor="let subraza of raza.subrazas">
+          <span>{{raza.nombre}} {{subraza}}</span><button class="button is-rounded" (click)="onSeleccionarSubraza(raza.nombre, subraza)" >Ver perrito</button>
+        </li>
+       </ol>
+    </li>
+  </ol>
 </div>

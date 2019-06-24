@@ -1,0 +1,38 @@
+<div>
+  <form #filtroForm="ngForm">
+    <h3>Filtro de perritos</h3>
+    <div class="field">
+      <label class="label">Name</label>
+      <div class="control">
+        <input
+          class="input"
+          (keyup)="onFiltrar()"
+          #filtroRaza="ngModel"
+          [(ngModel)]="filtro"
+          name="filtroRaza"
+          type="text"
+        />
+      </div>
+    </div>
+
+    <button (click)="onLimpiarFiltro()" class="button is-info">Limpiar</button>
+    <div class="check-filtro">
+      <input
+        type="checkbox"
+        id="checkRaza"
+        [checked]="checkRaza"
+        (change)="checkRaza = !checkRaza"
+      />
+      <label for="checkRaza">Raza</label>
+    </div>
+    <div class="check-filtro">
+      <input
+        type="checkbox"
+        id="checkSubraza"
+        [checked]="checkSubraza"
+        (change)="checkSubraza = !checkSubraza"
+      />
+      <label for="checkSubraza">Subraza</label>
+    </div>
+  </form>
+</div>
