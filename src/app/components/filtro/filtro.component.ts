@@ -57,4 +57,14 @@ export class FiltroComponent implements OnInit {
     this.limpiarFiltro.emit(this.data);
   }
 
+  onChangeRaza() {
+    this.checkRaza = !this.checkRaza;
+    this.onFiltrar();
+  }
+
+  onChageSubraza() {
+    this.checkSubraza = !this.checkSubraza;
+    this.onFiltrar();
+  }
+
 }

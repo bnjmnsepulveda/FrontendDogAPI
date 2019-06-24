@@ -21,7 +21,7 @@
         type="checkbox"
         id="checkRaza"
         [checked]="checkRaza"
-        (change)="checkRaza = !checkRaza"
+        (change)="onChangeRaza()"
       />
       <label for="checkRaza">Raza</label>
     </div>
@@ -30,7 +30,7 @@
         type="checkbox"
         id="checkSubraza"
         [checked]="checkSubraza"
-        (change)="checkSubraza = !checkSubraza"
+        (change)="onChageSubraza()"
       />
       <label for="checkSubraza">Subraza</label>
     </div>
