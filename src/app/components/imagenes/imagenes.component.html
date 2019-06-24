@@ -1,0 +1,19 @@
+<div>
+  <div class="columns" *ngFor="let contenedor of contenedorImagenes">
+    <div class="column is-one-quarter" *ngFor="let imagen of contenedor.imagenes" >
+    <img [src]="imagen" width="300" />
+  </div>
+  </div>
+</div>
+<style>
+    .parent {
+      display: flex;
+      height: 300px; /* Or whatever */
+    }
+
+    .child {
+      width: 250px;  /* Or whatever */
+      margin: auto;  /* Magic! */
+    }
+</style>
+
