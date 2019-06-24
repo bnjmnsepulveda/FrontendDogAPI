@@ -1,0 +1,25 @@
+<div>
+  <form #filtroForm="ngForm" (submit)="onFiltrar()">
+  <h3>Filtro de perritos</h3>
+  <input #filtroRaza="ngModel" [(ngModel)]="filtro" name="filtroRaza" type="text" />
+  <button>Filtrar</button>
+  <div class="check-filtro">
+    <input
+      type="checkbox"
+      id="checkRaza"
+      [checked]="checkRaza"
+      (change)="checkRaza = !checkRaza"
+    />
+    <label for="checkRaza">Raza</label>
+  </div>
+  <div class="check-filtro">
+    <input
+      type="checkbox"
+      id="checkSubraza"
+      [checked]="checkSubraza"
+      (change)="checkSubraza = !checkSubraza"
+    />
+    <label for="checkSubraza">Subraza</label>
+  </div>
+</form>
+</div>

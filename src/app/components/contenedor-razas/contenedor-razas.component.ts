@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RazaService } from 'src/app/services/raza.service';
 import { Router } from '@angular/router';
-import { Raza } from 'src/app/model/domain';
+import { Raza, Subraza } from 'src/app/model/domain';
 
 @Component({
   selector: 'app-contenedor-razas',
@@ -28,6 +28,10 @@ export class ContenedorRazasComponent implements OnInit {
 
   onSeleccionarRaza(raza: Raza) {
     this.router.navigate(['raza', raza.nombre]);
+  }
+
+  onSeleccionarSubraza(subraza: Subraza) {
+    this.router.navigate(['subraza', subraza.raza, subraza.nombre]);
   }
 
 }

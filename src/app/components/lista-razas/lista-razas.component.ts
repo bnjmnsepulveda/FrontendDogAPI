@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Raza } from 'src/app/model/domain';
+import { Raza, Subraza } from 'src/app/model/domain';
 
 @Component({
   selector: 'app-lista-razas',
@@ -12,6 +12,8 @@ export class ListaRazasComponent implements OnInit {
   razas: Raza[];
   @Output()
   seleccionarRaza = new EventEmitter<Raza>();
+  @Output()
+  seleccionarSubraza = new EventEmitter<Subraza>();
 
   constructor() { }
 
@@ -20,5 +22,13 @@ export class ListaRazasComponent implements OnInit {
 
   onSeleccionarRaza(raza: Raza) {
     this.seleccionarRaza.emit(raza);
+  }
+
+  onSeleccionarSubraza(raza: string, nombre: string) {
+    const subraza: Subraza = {
+      raza: raza,
+      nombre : nombre
+    };
+    this.seleccionarSubraza.emit(subraza);
   }
 }
