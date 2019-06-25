@@ -4,7 +4,9 @@ import { ResponseApi } from '../model/domain';
 import { HttpClient } from '@angular/common/http';
 import * as contantes from '../model/constantes';
 import { Observable } from 'rxjs';
-
+/**
+ *
+ */
 @Injectable({
   providedIn: 'root'
 })

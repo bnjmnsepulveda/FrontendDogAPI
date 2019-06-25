@@ -23,7 +23,7 @@ import { ListaSubrazasComponent } from './components/lista-subrazas/lista-subraz
     ContenedorRazasComponent,
     DetalleSubrazaComponent,
     ImagenesComponent,
-    ListaSubrazasComponent
+    ListaSubrazasComponent,
   ],
   imports: [
     BrowserModule,

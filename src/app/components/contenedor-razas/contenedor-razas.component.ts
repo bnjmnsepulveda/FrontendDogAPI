@@ -1,30 +1,27 @@
-import { ApiService } from './../../services/api.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RazaService } from 'src/app/services/raza.service';
 import { Router } from '@angular/router';
 import { Raza, Subraza } from 'src/app/model/domain';
-import { switchMap, tap, map, flatMap, concatAll, combineLatest, mergeAll, reduce, toArray } from 'rxjs/operators';
-import { from, of, concat, forkJoin, merge, zip } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-contenedor-razas',
   templateUrl: './contenedor-razas.component.html',
   styleUrls: ['./contenedor-razas.component.css']
 })
-export class ContenedorRazasComponent implements OnInit {
+export class ContenedorRazasComponent implements OnInit , OnDestroy{
 
   razas: Raza[];
   data: Raza[];
+  private subscripcionRazas: Subscription;
 
   constructor(
     private razaService: RazaService,
-    private apiService: ApiService,
     private router: Router
   ) { }
 
   ngOnInit() {
-
-    const razas$ = this.razaService
+    this.subscripcionRazas = this.razaService
     .findAll()
     .subscribe(
       razas => {
@@ -35,6 +32,9 @@ export class ContenedorRazasComponent implements OnInit {
     );
   }
 
+  ngOnDestroy() {
+    this.subscripcionRazas.unsubscribe();
+  }
   onFiltarRazas(razas: Raza[]) {
     this.razas = razas;
   }

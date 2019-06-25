@@ -1,44 +1,43 @@
 <div class="container is-mobile" *ngIf="razas; else cargando">
-
   <ng-template ngFor let-raza let-x="index" [ngForOf]="razas">
-  <div class="columns is-vcentered" >
-    <div class="column has-text-centered">
-      <div >
-        <img src="{{ raza.avatar }}" width="200" />
-      </div>
-      <div>
+    <div class="columns is-vcentered">
+      <div class="column has-text-centered">
+        <div>
+          <img src="{{ raza.avatar }}" width="200" />
+        </div>
+        <div>
           <span class="subtitle">Nº {{ x + 1 }} {{ raza.nombre }}</span>
+        </div>
+      </div>
+
+      <div class="column has-text-centered">
+        <a class="button is-rounded is-info is-outlined is-fullwidth" (click)="onSeleccionarRaza(raza)">
+          <span class="icon">
+            <i class="fas fa-search"></i>
+          </span>
+          <span>Detalles</span>
+        </a>
+      </div>
+
+      <div class="column is-half">
+        <app-lista-subrazas [raza]="raza" (seleccionarSubraza)="onSeleccionarSubraza($event)">
+        </app-lista-subrazas>
       </div>
     </div>
-
-    <div class="column has-text-centered">
-      <a
-      class="button is-rounded is-info is-outlined is-fullwidth"
-      (click)="onSeleccionarRaza(raza)"
-    >
-      <span class="icon">
-        <i class="fas fa-search"></i>
-      </span>
-      <span>Detalles</span>
-    </a>
-    </div>
-
-    <div class="column is-half">
-      <app-lista-subrazas
-        [raza]="raza"
-        (seleccionarSubraza)="onSeleccionarSubraza($event)"
-      ></app-lista-subrazas>
-    </div>
-
-  </div>
-  <div class="column">
+    <div class="column">
       <div class="linea-separadora-horizontal"></div>
+    </div>
+  </ng-template>
+  <div *ngIf="razas.length === 0"  class="content">
+      <span class="has-text-danger has-text-centered is-size-4"
+      >No se encontraron perritos</span
+    >
   </div>
-
-</ng-template>
 </div>
 <ng-template #cargando>
-  <span class="has-text-info has-text-centered"
-    >Cargando lista de perros...</span
-  >
+  <div class="content">
+    <span class="has-text-info has-text-centered is-size-4"
+      >Cargando lista de perros...</span
+    >
+  </div>
 </ng-template>
