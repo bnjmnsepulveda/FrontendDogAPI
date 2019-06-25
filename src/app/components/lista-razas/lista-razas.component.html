@@ -1,41 +1,44 @@
 <div class="container is-mobile" *ngIf="razas; else cargando">
-  <table class="table is-striped is-mobile">
-    <thead>
-      <tr>
-        <th>N°</th>
-        <th>Vista previa</th>
-        <th>Nombre Raza</th>
-        <th colspan="2">Subrazas</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let raza of razas; let x = index">
-        <td>{{ x + 1}}</td>
-        <td>
-            <img
-              width="100"
-              src="{{ raza.avatar }}"
-            />
-          </td>
-        <td>
-          <span>{{ raza.nombre }}</span>
-        </td>
-        <td>
-          <app-lista-subrazas [raza]="raza" (seleccionarSubraza)="onSeleccionarSubraza($event)" ></app-lista-subrazas>
-        </td>
 
-        <td>
-            <a class="button is-rounded is-info is-outlined is-small" (click)="onSeleccionarRaza(raza)">
-                <span class="icon">
-                  <i class="fas fa-search"></i>
-                </span>
-                <span>Detalles</span>
-              </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <ng-template ngFor let-raza let-x="index" [ngForOf]="razas">
+  <div class="columns is-vcentered" >
+    <div class="column has-text-centered">
+      <div >
+        <img src="{{ raza.avatar }}" width="200" />
+      </div>
+      <div>
+          <span class="subtitle">Nº {{ x + 1 }} {{ raza.nombre }}</span>
+      </div>
+    </div>
+
+    <div class="column has-text-centered">
+      <a
+      class="button is-rounded is-info is-outlined is-fullwidth"
+      (click)="onSeleccionarRaza(raza)"
+    >
+      <span class="icon">
+        <i class="fas fa-search"></i>
+      </span>
+      <span>Detalles</span>
+    </a>
+    </div>
+
+    <div class="column is-half">
+      <app-lista-subrazas
+        [raza]="raza"
+        (seleccionarSubraza)="onSeleccionarSubraza($event)"
+      ></app-lista-subrazas>
+    </div>
+
+  </div>
+  <div class="column">
+      <div class="linea-separadora-horizontal"></div>
+  </div>
+
+</ng-template>
 </div>
 <ng-template #cargando>
-    <span class="has-text-info has-text-centered">Cargando lista de perros...</span>
+  <span class="has-text-info has-text-centered"
+    >Cargando lista de perros...</span
+  >
 </ng-template>

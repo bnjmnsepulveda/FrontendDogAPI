@@ -1,6 +1,6 @@
-<div class="container is-fluid" *ngIf="raza">
+<div class="container is-fluid header-app" *ngIf="raza">
   <div class="notification">
-    <h1 class="title">{{ raza.nombre }}</h1>
+    <span class="title">{{ raza.nombre }}</span>
   </div>
   <app-imagenes [imagenes]="raza.imagenes"></app-imagenes>
 </div>
