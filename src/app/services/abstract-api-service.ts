@@ -8,7 +8,7 @@ const HTTP_OPTIONS = {
     'Content-Type':  'application/json'
   })
 };
-export class AbstractApiService<T> {
+export abstract class AbstractApiService<T> {
 
   constructor(private _http: HttpClient) { }
 
