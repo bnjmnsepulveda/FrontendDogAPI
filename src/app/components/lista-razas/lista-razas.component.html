@@ -11,10 +11,7 @@
       </div>
 
       <div class="column has-text-centered">
-        <a
-          class="button is-rounded is-info is-outlined is-fullwidth"
-          (click)="onSeleccionarRaza(raza)"
-        >
+        <a class="button is-rounded is-info is-outlined is-fullwidth" (click)="onSeleccionarRaza(raza)">
           <span class="icon">
             <i class="fas fa-search"></i>
           </span>
@@ -23,10 +20,8 @@
       </div>
 
       <div class="column is-half">
-        <app-lista-subrazas
-          [raza]="raza"
-          (seleccionarSubraza)="onSeleccionarSubraza($event)"
-        ></app-lista-subrazas>
+        <app-lista-subrazas [raza]="raza" (seleccionarSubraza)="onSeleccionarSubraza($event)">
+        </app-lista-subrazas>
       </div>
     </div>
     <div class="column">
