@@ -1,18 +1,10 @@
-<div class="tile is-ancestor">
-    <div class="tile is-parent">
-      <article class="tile is-child centered">
-        <!-- content here -->
-      </article>
-    </div>
-  </div>
-
 <div class="tile is-ancestor" *ngFor="let contenedor of contenedorImagenes">
   <div
     class="tile is-parent"
     *ngFor="let imagen of contenedor.imagenes"
   >
     <div class="tile is-child has-text-centered notification">
-      <img [src]="imagen" width="300" />
+      <img [src]="imagen" width="250" />
     </div>
   </div>
 </div>
